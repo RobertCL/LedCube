@@ -7,37 +7,21 @@
 
 #include "CubeBounceSequence.h"
 
-CubeBounceSequence::CubeBounceSequence() {
-	x = 3;
-	y = 0;
-	z = 1;
-
-	xp = 1;
-	yp = 1;
-	zp = 1;
-}
+CubeBounceSequence::CubeBounceSequence() :
+	cube1(3, 0, 1, 3, 1, 1, 1),
+	cube2(0, 4, 3, 2, -1, -1, -1)
+{}
 
 CubeBounceSequence::~CubeBounceSequence() {}
 
 void CubeBounceSequence::next(){
-	int size = 3;
 	cubeOff();
-	drawCube(x, y, z, size);
-
-	x += xp;
-	y += yp;
-	z += zp;
-
-	if (x + xp + size - 1 > 7) xp = -1;
-	else if (x + xp < 0) xp = 1;
-
-	if (y + yp + size - 1 > 7) yp = -1;
-	else if (y + yp < 0) yp = 1;
-
-	if (z + zp + size - 1 > 7) zp = -1;
-	else if (z + zp < 0) zp = 1;
+	drawCube(cube1.x, cube1.y, cube1.z, cube1.size);
+	cube1.move();
+	drawCube(cube2.x, cube2.y, cube2.z, cube2.size);
+	cube2.move();
 }
 
 int CubeBounceSequence::delay(){
-	return 10;
+	return 7;
 }

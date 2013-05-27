@@ -9,6 +9,7 @@
 #define CUBEBOUNCESEQUENCE_H_
 
 #include "Sequence.h"
+#include "Helpers/CubeTracker.h"
 
 class CubeBounceSequence: public Sequence {
 public:
@@ -19,13 +20,8 @@ public:
 	virtual int delay();
 
 private:
-	int x;
-	int y;
-	int z;
-
-	int xp;
-	int yp;
-	int zp;
+	CubeTracker cube1;
+	CubeTracker cube2;
 };
 
 #endif /* CUBEBOUNCESEQUENCE_H_ */

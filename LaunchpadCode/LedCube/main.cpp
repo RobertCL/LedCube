@@ -57,8 +57,8 @@ int main(void)
 
 	//FillCubeSequence s1;
 	//BlinkSequence s1;
-	//CubeBounceSequence s1;
-	ThrobberSequence s1;
+	CubeBounceSequence s1;
+	//ThrobberSequence s1;
 	//TranslationTestSequence s1;
 	//PlaneSequence s1;
 
