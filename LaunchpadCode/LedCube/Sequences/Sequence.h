@@ -11,7 +11,7 @@
 class Sequence {
 public:
 	Sequence();
-	~Sequence();
+	virtual ~Sequence();
 
 	char cube[8][8]; // Cube[layer, row]
 	virtual void next() = 0;
@@ -24,7 +24,8 @@ protected:
 	void cubeOff();
 	// Turn all LED's on
 	void cubeOn();
-
+	// Draw a cube of size at x,y,z (callee needs to check overflows)
+	void drawCube(int x, int y, int z, int size);
 };
 
 #endif /* SEQUENCE_H_ */

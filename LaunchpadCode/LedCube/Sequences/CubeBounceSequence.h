@@ -26,8 +26,6 @@ private:
 	int xp;
 	int yp;
 	int zp;
-
-	void drawMiniCube(int atX, int atY, int atZ);
 };
 
 #endif /* CUBEBOUNCESEQUENCE_H_ */

@@ -32,3 +32,14 @@ void Sequence::cubeOff(){
 void Sequence::cubeOn(){
 	setCube(0xFF);
 }
+
+void Sequence::drawCube(int x, int y, int z, int size){
+	char t = 0x00;
+	for (int i=0; i<size; i++)
+		t = (t << 1) + 1;
+	t = t << x;
+
+	for (int yp=0; yp<size; yp++)
+		for (int zp=0; zp<size; zp++)
+			cube[z + zp][y + yp] = t;
+}
