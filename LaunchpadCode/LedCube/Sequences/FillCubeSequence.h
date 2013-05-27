@@ -13,7 +13,6 @@
 class FillCubeSequence : public Sequence {
 public:
 	FillCubeSequence();
-	~FillCubeSequence();
 
 	virtual void next();
 	virtual int delay();

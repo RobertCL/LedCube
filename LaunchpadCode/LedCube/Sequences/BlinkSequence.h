@@ -13,7 +13,6 @@
 class BlinkSequence: public Sequence {
 public:
 	BlinkSequence();
-	virtual ~BlinkSequence();
 
 	virtual void next();
 	virtual int delay();

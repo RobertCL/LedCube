@@ -13,8 +13,6 @@ BlinkSequence::BlinkSequence() {
 	delayChange = -1;
 }
 
-BlinkSequence::~BlinkSequence() { }
-
 void BlinkSequence::next(){
 	if (isOn)
 		cubeOff();
