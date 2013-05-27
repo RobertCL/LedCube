@@ -27,8 +27,10 @@ void ThrobberSequence::next(){
 		drawCube(loc, loc, loc, cubeSize);
 	}
 
-	if (count == 4 || count == 0) d = 20;
-	else d = 8;
+	if (count == 4 || count == 0)
+		d = 10;
+	else
+		d = 4;
 
 	count += countp;
 

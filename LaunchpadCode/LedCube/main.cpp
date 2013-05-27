@@ -10,6 +10,8 @@
 #include "Sequences/BlinkSequence.h"
 #include "Sequences/CubeBounceSequence.h"
 #include "Sequences/ThrobberSequence.h"
+#include "Sequences/TranslationTestSequence.h"
+#include "Sequences/PlaneSequence.h"
 
 #define PERIPH_HC SYSCTL_PERIPH_GPIOE
 #define PORT_HC GPIO_PORTE_BASE
@@ -54,11 +56,13 @@ int main(void)
 		hc.setp(i);
 
 	//FillCubeSequence s1;
-	//BlinkSequence s2;
-	//CubeBounceSequence s3;
-	ThrobberSequence s4;
+	//BlinkSequence s1;
+	//CubeBounceSequence s1;
+	ThrobberSequence s1;
+	//TranslationTestSequence s1;
+	//PlaneSequence s1;
 
-	Sequence * s = &s4; // sequence s points to the address of the f1 object (polymorphism)
+	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
 
 	while(1)
 	{

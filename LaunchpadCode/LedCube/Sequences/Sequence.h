@@ -26,6 +26,19 @@ protected:
 	void cubeOn();
 	// Draw a cube of size at x,y,z (callee needs to check overflows)
 	void drawCube(int x, int y, int z, int size);
+
+	// Draws a solid plane in the X-Z axis at atY on the y-axis
+	void DrawXZPlane(int atY);
+	// Draws a solid plane in the Y-Z axis at atX on the x-axis
+	void DrawYZPlane(int atX);
+	// Draws a solid plane in the X-Y axis at atZ on the z-axis
+	void DrawXYPlane(int atZ);
+
+	// Translates (moves) the cube array in the given (x,y,z) direction
+	// x,y,z should be -1 or 1
+	// data pushed off the cube is lost, rows made empty are set to off (zero)
+	void Translate(int x, int y, int z);
+
 };
 
 #endif /* SEQUENCE_H_ */
