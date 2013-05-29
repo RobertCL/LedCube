@@ -39,6 +39,8 @@ protected:
 	// data pushed off the cube is lost, rows made empty are set to off (zero)
 	void Translate(int x, int y, int z);
 
+	// Draws a letter (caps only) at position atY
+	void drawLetter(char l, int atY);
 };
 
 #endif /* SEQUENCE_H_ */
