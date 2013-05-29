@@ -21,8 +21,8 @@ int Sequence::delay(){
 
 void Sequence::setCube(char d){
 	for (int i=0; i<8; i++)
-			for (int j=0; j<8; j++)
-				cube[i][j] = d;
+		for (int j=0; j<8; j++)
+			cube[i][j] = d;
 }
 
 void Sequence::cubeOff(){
