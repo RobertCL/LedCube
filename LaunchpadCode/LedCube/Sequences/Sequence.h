@@ -14,8 +14,14 @@ public:
 	virtual ~Sequence();
 
 	char cube[8][8]; // Cube[layer, row]
+
+	// Setup cube for next sequence
 	virtual void next() = 0;
-	virtual int delay();
+
+	// Time to show next() sequence for
+	// measured in, er, number of times to run round draw cube loop in main
+	// 1 is fastest, 10 is a reasonable speed, 50 is slowish but good for debugging
+	int delay;
 
 protected:
 	// Set all rows in cube to be the same

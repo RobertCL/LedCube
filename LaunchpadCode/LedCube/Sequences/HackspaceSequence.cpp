@@ -13,7 +13,7 @@ const int textLen = 9;
 HackspaceSequence::HackspaceSequence() {
 	letterNo = 0;
 	transPos = -1;
-	d = 50;
+	delay = 50;
 }
 
 void HackspaceSequence::next() {
@@ -21,7 +21,7 @@ void HackspaceSequence::next() {
 		drawLetter(text[letterNo], 0);
 		drawLetter(text[letterNo], 1);
 
-		d = 100;
+		delay = 100;
 
 		letterNo++;
 		if (letterNo == textLen)
@@ -30,15 +30,10 @@ void HackspaceSequence::next() {
 
 	else {
 		Translate(0, 1, 0);
-		d = 10;
+		delay = 10;
 	}
 
 	transPos++;
 	if (transPos == 4)
 		transPos = -1;
 }
-
-int HackspaceSequence::delay(){
-	return d;
-}
-

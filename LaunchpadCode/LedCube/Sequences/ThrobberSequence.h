@@ -15,12 +15,10 @@ public:
 	ThrobberSequence();
 
 	virtual void next();
-	virtual int delay();
 
 private:
 	int count;
 	int countp;
-	int d;
 };
 
 #endif /* THROBBERSEQUENCE_H_ */

@@ -10,11 +10,7 @@
 PlaneSequence::PlaneSequence() {
 	i = 0;
 	ip = 1;
-	d = 100;
-}
-
-int PlaneSequence::delay(){
-	return d;
+	delay = 100;
 }
 
 void PlaneSequence::next(){
@@ -31,9 +27,9 @@ void PlaneSequence::next(){
 	DrawYZPlane(7 - i);
 
 	if (i == 0 || i == 3)
-		d = 100;
+		delay = 100;
 	else
-		d = 10;
+		delay = 10;
 
 	i += ip;
 

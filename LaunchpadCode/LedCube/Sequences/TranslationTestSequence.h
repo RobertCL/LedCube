@@ -15,9 +15,6 @@ public:
 	TranslationTestSequence();
 
 	virtual void next();
-	virtual int delay();
-
-
 
 private:
 	int count;

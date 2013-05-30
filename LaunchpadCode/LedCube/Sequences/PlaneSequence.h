@@ -14,13 +14,11 @@ class PlaneSequence : public Sequence {
 public:
 	PlaneSequence();
 
-	virtual int delay();
 	virtual void next();
 
 private:
 	int i;
 	int ip;
-	int d;
 };
 
 #endif /* PLANESEQUENCE_H_ */

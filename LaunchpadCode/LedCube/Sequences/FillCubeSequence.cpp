@@ -10,6 +10,7 @@
 FillCubeSequence::FillCubeSequence() {
 	x=0;
 	y=0;
+	delay = 1;
 }
 
 void FillCubeSequence::next(){
@@ -39,8 +40,4 @@ void FillCubeSequence::next(){
 			}
 		}
 	}
-}
-
-int FillCubeSequence::delay(){
-	return 1;
 }

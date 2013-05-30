@@ -15,11 +15,9 @@ public:
 	BlinkSequence();
 
 	virtual void next();
-	virtual int delay();
 
 private:
 	bool isOn;
-	int delayTime;
 	int delayChange;
 };
 

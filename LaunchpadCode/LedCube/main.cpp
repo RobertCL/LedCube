@@ -58,22 +58,22 @@ int main(void)
 	for (char i = 0; i < 8; i++)
 		hc.setp(i);
 
-	//FillCubeSequence s1;
 	//BlinkSequence s1;
 	//CubeBounceSequence s1;
-	//ThrobberSequence s1;
-	//TranslationTestSequence s1;
-	//PlaneSequence s1;
+	//FillCubeSequence s1;
 	//HackspaceSequence s1;
 	//OutlineSequence s1;
-	SnakeSequence s1;
+	//PlaneSequence s1;
+	//SnakeSequence s1;
+	//ThrobberSequence s1;
+	TranslationTestSequence s1;
 
 	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
 
 	while(1)
 	{
 		// repeat cube image a number of times before moving on to next image
-		for (int showdelay = 0; showdelay < s->delay(); showdelay++)
+		for (int showdelay = 0; showdelay < s->delay; showdelay++)
 			for (int l = 0; l < 8; l++)
 			{
 				// Loop round latched in this layer

@@ -18,10 +18,6 @@ SnakeSequence::SnakeSequence() {
 	direction = 1;
 }
 
-int SnakeSequence::delay(){
-	return 10;
-}
-
 void SnakeSequence::next(){
 	setOn(head_x, head_y, head_z);
 

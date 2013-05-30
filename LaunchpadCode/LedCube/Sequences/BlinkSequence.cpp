@@ -9,7 +9,7 @@
 
 BlinkSequence::BlinkSequence() {
 	isOn = false;
-	delayTime = 50;
+	delay = 50;
 	delayChange = -1;
 }
 
@@ -21,12 +21,7 @@ void BlinkSequence::next(){
 
 	isOn = !isOn;
 
-	delayTime += delayChange;
-	if (delayTime == 1 || delayTime == 50)
+	delay += delayChange;
+	if (delay == 1 || delay == 50)
 		delayChange *= -1;
 }
-
-int BlinkSequence::delay(){
-	return delayTime;
-}
-

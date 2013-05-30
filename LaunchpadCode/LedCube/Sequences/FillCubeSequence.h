@@ -15,7 +15,6 @@ public:
 	FillCubeSequence();
 
 	virtual void next();
-	virtual int delay();
 
 private:
 	int x;

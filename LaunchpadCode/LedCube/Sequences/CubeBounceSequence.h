@@ -17,7 +17,6 @@ public:
 	virtual ~CubeBounceSequence();
 
 	virtual void next();
-	virtual int delay();
 
 private:
 	CubeTracker cube1;

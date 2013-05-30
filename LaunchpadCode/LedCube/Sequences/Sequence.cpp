@@ -10,13 +10,10 @@
 Sequence::Sequence() {
 	// Start with a blank cube
 	cubeOff();
+	delay = 10;
 }
 
 Sequence::~Sequence() {
-}
-
-int Sequence::delay(){
-	return 1;
 }
 
 void Sequence::setCube(char d){

@@ -9,8 +9,9 @@
 
 CubeBounceSequence::CubeBounceSequence() :
 	cube1(3, 0, 1, 3, 1, 1, 1),
-	cube2(0, 4, 3, 2, -1, -1, -1)
-{}
+	cube2(0, 4, 3, 2, -1, -1, -1) {
+	delay = 7;
+}
 
 CubeBounceSequence::~CubeBounceSequence() {}
 
@@ -20,8 +21,4 @@ void CubeBounceSequence::next(){
 	cube1.move();
 	drawCube(cube2.x, cube2.y, cube2.z, cube2.size);
 	cube2.move();
-}
-
-int CubeBounceSequence::delay(){
-	return 7;
 }

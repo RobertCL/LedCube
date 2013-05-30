@@ -15,7 +15,6 @@ public:
 	SnakeSequence();
 
 	virtual void next();
-	virtual int delay();
 };
 
 #endif /* SNAKESEQUENCE_H_ */

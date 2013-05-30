@@ -12,6 +12,7 @@ TranslationTestSequence::TranslationTestSequence() {
 	drawPlaneNext = true;
 	count = 0;
 	dir = 1;
+	delay = 4;
 }
 
 void TranslationTestSequence::clearAndDrawInitialPlane(){
@@ -33,10 +34,6 @@ void TranslationTestSequence::clearAndDrawInitialPlane(){
 			DrawYZPlane(0);
 			break;
 	}
-}
-
-int TranslationTestSequence::delay(){
-	return 2;
 }
 
 void TranslationTestSequence::next(){

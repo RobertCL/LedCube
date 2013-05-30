@@ -10,11 +10,6 @@
 ThrobberSequence::ThrobberSequence() {
 	count = 0;
 	countp = 1;
-	d = 10;
-}
-
-int ThrobberSequence::delay(){
-	return d;
 }
 
 void ThrobberSequence::next(){
@@ -28,9 +23,9 @@ void ThrobberSequence::next(){
 	}
 
 	if (count == 4 || count == 0)
-		d = 10;
+		delay = 10;
 	else
-		d = 4;
+		delay = 4;
 
 	count += countp;
 
