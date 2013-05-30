@@ -36,7 +36,7 @@ void TranslationTestSequence::clearAndDrawInitialPlane(){
 }
 
 int TranslationTestSequence::delay(){
-	return 4;
+	return 2;
 }
 
 void TranslationTestSequence::next(){

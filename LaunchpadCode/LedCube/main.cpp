@@ -13,6 +13,8 @@
 #include "Sequences/TranslationTestSequence.h"
 #include "Sequences/PlaneSequence.h"
 #include "Sequences/HackspaceSequence.h"
+#include "Sequences/OutlineSequence.h"
+#include "Sequences/SnakeSequence.h"
 
 #define PERIPH_HC SYSCTL_PERIPH_GPIOE
 #define PORT_HC GPIO_PORTE_BASE
@@ -62,7 +64,9 @@ int main(void)
 	//ThrobberSequence s1;
 	//TranslationTestSequence s1;
 	//PlaneSequence s1;
-	HackspaceSequence s1;
+	//HackspaceSequence s1;
+	//OutlineSequence s1;
+	SnakeSequence s1;
 
 	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
 

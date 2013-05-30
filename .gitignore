@@ -15,3 +15,5 @@
 # Eclipse Files
 .metadata
 dvt
+Debug/
+.settings/

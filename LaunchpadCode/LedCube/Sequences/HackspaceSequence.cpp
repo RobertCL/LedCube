@@ -34,7 +34,7 @@ void HackspaceSequence::next() {
 	}
 
 	transPos++;
-	if (transPos == 9)
+	if (transPos == 4)
 		transPos = -1;
 }
 
