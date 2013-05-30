@@ -9,13 +9,20 @@
 #include <stdlib.h>
 
 Snake2Sequence::Snake2Sequence() {
-	delay = 5;
+	initSnake();
+}
 
-	snake_x[0] = 0;
-	snake_y[0] = 0;
-	snake_z[0] = 0;
+void Snake2Sequence::initSnake(){
+	delay = 1;
+	stuck = 0;
+
+	for (int i = 0; i < MAX_SNAKE_LEN; i++){
+		snake_x[i] = 0;
+		snake_y[i] = 0;
+		snake_z[i] = 0;
+	}
 	snakeLen = 1;
-	growBy = 23;
+	growBy = 15;
 
 	delta_x = 1;
 	delta_y = 0;
@@ -32,7 +39,7 @@ void Snake2Sequence::drawSnakeInCube(){
 }
 
 void Snake2Sequence::shuffleSnake(){
-	for (int i = snakeLen - 1; i >= 0; i--){
+	for (int i = snakeLen - 2; i >= 0; i--){
 		snake_x[i + 1] = snake_x[i];
 		snake_y[i + 1] = snake_y[i];
 		snake_z[i + 1] = snake_z[i];
@@ -58,10 +65,23 @@ bool Snake2Sequence::isSnake(char x, char y, char z){
 
 void Snake2Sequence::next(){
 
+	if (stuck > 0) {
+		if (stuck < 10)
+			Translate(0, 0, -1);
+
+		stuck--;
+		if (stuck == 0)
+			initSnake();
+
+		return;
+	}
+
+
 	// Work out if we need to turn because either
 	// - we are about to go out of the cube
 	// - we are about to eat ourselves
 	// - we just randomly fancy turning
+	short attempts = 0;
 	while (true){
 		int next_x = snake_x[0] + delta_x;
 		int next_y = snake_y[0] + delta_y;
@@ -100,6 +120,13 @@ void Snake2Sequence::next(){
 		}
 		else {
 			break;
+		}
+
+		attempts++;
+		if (attempts == 30){
+			stuck = 40;
+			delay = 20;
+			return;
 		}
 	}
 

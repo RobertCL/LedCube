@@ -17,11 +17,13 @@ public:
 	virtual void next();
 
 private:
+	#define MAX_SNAKE_LEN 16
+
 	// Where is the snake
 	// [0] is the head
-	char snake_x[25];
-	char snake_y[25];
-	char snake_z[25];
+	char snake_x[16];
+	char snake_y[16];
+	char snake_z[16];
 
 	// How long is the snake
 	char snakeLen;
@@ -30,6 +32,11 @@ private:
 
 	// Next move
 	short delta_x, delta_y, delta_z;
+
+	// >0 if the snake is stuck
+	char stuck;
+
+	void initSnake();
 
 	// Draws the current snake in the cube
 	void drawSnakeInCube();
