@@ -2,7 +2,6 @@
 #include "inc/hw_memmap.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
-#include "driverlib/rom.h"
 #include "Drivers/HC138N.h"
 #include "Drivers/LayerControl.h"
 #include "Sequences/Sequence.h"
@@ -15,6 +14,7 @@
 #include "Sequences/HackspaceSequence.h"
 #include "Sequences/OutlineSequence.h"
 #include "Sequences/SnakeSequence.h"
+#include "Sequences/Snake2Sequence.h"
 
 #define PERIPH_HC SYSCTL_PERIPH_GPIOE
 #define PORT_HC GPIO_PORTE_BASE
@@ -65,8 +65,9 @@ int main(void)
 	//OutlineSequence s1;
 	//PlaneSequence s1;
 	//SnakeSequence s1;
+	Snake2Sequence s1;
 	//ThrobberSequence s1;
-	TranslationTestSequence s1;
+	//TranslationTestSequence s1;
 
 	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
 
