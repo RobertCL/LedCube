@@ -22,16 +22,8 @@ int SnakeSequence::delay(){
 	return 10;
 }
 
-inline void SnakeSequence::set(int x, int y, int z) {
-	cube[z][y] |= 1<<x;
-}
-
-inline bool SnakeSequence::get(int x, int y, int z) {
-	return !!(cube[z][y] &= 1<<x);
-}
-
 void SnakeSequence::next(){
-	set(head_x, head_y, head_z);
+	setOn(head_x, head_y, head_z);
 
 	while(true){
 

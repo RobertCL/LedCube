@@ -24,6 +24,12 @@ protected:
 	void cubeOff();
 	// Turn all LED's on
 	void cubeOn();
+
+	// Set the LED at x,y,z on
+	void setOn(int x, int y, int z);
+	// Get the state of the LED at x,y,z, true = on, false = off
+	bool getState(int x, int y, int z);
+
 	// Draw a cube of size at x,y,z (callee needs to check overflows)
 	void drawCube(int x, int y, int z, int size);
 

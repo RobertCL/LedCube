@@ -33,6 +33,14 @@ void Sequence::cubeOn(){
 	setCube(0xFF);
 }
 
+void Sequence::setOn(int x, int y, int z) {
+	cube[z][y] |= 1<<x;
+}
+
+bool Sequence::getState(int x, int y, int z) {
+	return cube[z][y] &= 1<<x;
+}
+
 void Sequence::drawCube(int x, int y, int z, int size){
 	char t = 0x00;
 	for (int i=0; i<size; i++)
