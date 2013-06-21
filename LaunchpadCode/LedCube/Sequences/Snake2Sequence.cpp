@@ -28,12 +28,12 @@ void Snake2Sequence::initSnake(){
 	delta_y = 0;
 	delta_z = 0;
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < FOOD_COUNT; i++) {
 		food_x[i] = rand() % 8;
 		food_y[i] = rand() % 8;
 		food_z[i] = rand() % 8;
 	}
-	foodCount = 5;
+
 
 	drawSnakeInCube();
 	drawFoodInCube();
@@ -47,7 +47,7 @@ void Snake2Sequence::drawSnakeInCube(){
 }
 
 void Snake2Sequence::drawFoodInCube(){
-	for (int i = 0; i < foodCount; i++){
+	for (int i = 0; i < FOOD_COUNT; i++){
 		setOn(food_x[i], food_y[i], food_z[i]);
 	}
 }
@@ -78,7 +78,7 @@ bool Snake2Sequence::isSnake(char x, char y, char z){
 }
 
 short Snake2Sequence::isFood(char x, char y, char z){
-	for (char i = 0; i < foodCount; i++)
+	for (char i = 0; i < FOOD_COUNT; i++)
 		if (food_x[i] == x && food_y[i] == y && food_z[i] == z)
 			return i;
 

@@ -68,11 +68,11 @@ int main(void)
 	//OutlineSequence s5(ref);
 	//PlaneSequence s6(ref);
 	//SnakeSequence s7(ref);
-	Snake2Sequence s8(ref);
-	//ThrobberSequence s9(ref);
+	//Snake2Sequence s8(ref);
+	ThrobberSequence s9(ref);
 	//TranslationTestSequence s10(ref);
 
-	Sequence * s = &s8; // sequence s points to the address of the f1 object (polymorphism)
+	Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
 
 	while(1)
 	{

@@ -18,12 +18,13 @@ public:
 
 private:
 	#define MAX_SNAKE_LEN 15
+	#define FOOD_COUNT 4
 
 	// Where is the snake
 	// [0] is the head
-	char snake_x[15];
-	char snake_y[15];
-	char snake_z[15];
+	char snake_x[MAX_SNAKE_LEN];
+	char snake_y[MAX_SNAKE_LEN];
+	char snake_z[MAX_SNAKE_LEN];
 
 	// How long is the snake
 	char snakeLen;
@@ -37,11 +38,9 @@ private:
 	char stuck;
 
 	// Where is the food
-	char food_x[5];
-	char food_y[5];
-	char food_z[5];
-	// How much food is there
-	char foodCount;
+	char food_x[FOOD_COUNT];
+	char food_y[FOOD_COUNT];
+	char food_z[FOOD_COUNT];
 
 	void initSnake();
 
