@@ -13,7 +13,7 @@ Snake2Sequence::Snake2Sequence() {
 }
 
 void Snake2Sequence::initSnake(){
-	delay = 1;
+	delay = 10;
 	stuck = 0;
 
 	for (int i = 0; i < MAX_SNAKE_LEN; i++){
@@ -22,19 +22,33 @@ void Snake2Sequence::initSnake(){
 		snake_z[i] = 0;
 	}
 	snakeLen = 1;
-	growBy = 15;
+	growBy = 4;
 
 	delta_x = 1;
 	delta_y = 0;
 	delta_z = 0;
 
+	for (int i = 0; i < 6; i++) {
+		food_x[i] = rand() % 8;
+		food_y[i] = rand() % 8;
+		food_z[i] = rand() % 8;
+	}
+	foodCount = 5;
+
 	drawSnakeInCube();
+	drawFoodInCube();
 }
 
 void Snake2Sequence::drawSnakeInCube(){
 	cubeOff();
 	for (int i = 0; i < snakeLen; i++){
 		setOn(snake_x[i], snake_y[i], snake_z[i]);
+	}
+}
+
+void Snake2Sequence::drawFoodInCube(){
+	for (int i = 0; i < foodCount; i++){
+		setOn(food_x[i], food_y[i], food_z[i]);
 	}
 }
 
@@ -63,6 +77,14 @@ bool Snake2Sequence::isSnake(char x, char y, char z){
 	return false;
 }
 
+short Snake2Sequence::isFood(char x, char y, char z){
+	for (char i = 0; i < foodCount; i++)
+		if (food_x[i] == x && food_y[i] == y && food_z[i] == z)
+			return i;
+
+	return -1;
+}
+
 void Snake2Sequence::next(){
 
 	if (stuck > 0) {
@@ -75,7 +97,6 @@ void Snake2Sequence::next(){
 
 		return;
 	}
-
 
 	// Work out if we need to turn because either
 	// - we are about to go out of the cube
@@ -123,7 +144,7 @@ void Snake2Sequence::next(){
 		}
 
 		attempts++;
-		if (attempts == 30){
+		if (attempts == 90){
 			stuck = 40;
 			delay = 20;
 			return;
@@ -138,6 +159,24 @@ void Snake2Sequence::next(){
 	snake_y[0] = snake_y[1] + delta_y;
 	snake_z[0] = snake_z[1] + delta_z;
 
+	// See if we've eaten anything
+	short food = isFood(snake_x[0], snake_y[0], snake_z[0]);
+	if (food >= 0){
+		// Mmm, food
+		// grow
+		growBy += 3;
+		while (snakeLen + growBy > MAX_SNAKE_LEN) { growBy--; }
+		// speed up
+		delay--;
+		if (delay < 1) delay = 1;
+
+		// Replace with more food
+		food_x[food] = rand() % 8;
+		food_y[food] = rand() % 8;
+		food_z[food] = rand() % 8;
+	}
+
 	// Draw new snake
 	drawSnakeInCube();
+	drawFoodInCube();
 }

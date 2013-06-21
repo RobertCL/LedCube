@@ -36,15 +36,27 @@ private:
 	// >0 if the snake is stuck
 	char stuck;
 
+	// Where is the food
+	char food_x[5];
+	char food_y[5];
+	char food_z[5];
+	// How much food is there
+	char foodCount;
+
 	void initSnake();
 
 	// Draws the current snake in the cube
 	void drawSnakeInCube();
+	// Draws the food in the cube
+	void drawFoodInCube();
 
 	// Is a point on the snake (used for collision test)
 	bool isSnake(char x, char y, char z);
 	// Move the snake "along" one
 	void shuffleSnake();
+
+	// Is a point food
+	short isFood(char x, char y, char z);
 };
 
 #endif /* SNAKE2SEQUENCE_H_ */

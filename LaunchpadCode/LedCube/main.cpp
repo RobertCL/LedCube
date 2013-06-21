@@ -65,9 +65,9 @@ int main(void)
 	//OutlineSequence s1;
 	//PlaneSequence s1;
 	//SnakeSequence s1;
-	Snake2Sequence s1;
+	//Snake2Sequence s1;
 	//ThrobberSequence s1;
-	//TranslationTestSequence s1;
+	TranslationTestSequence s1;
 
 	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
 
