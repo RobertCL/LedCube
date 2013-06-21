@@ -12,18 +12,18 @@
 
 class Snake2Sequence: public Sequence {
 public:
-	Snake2Sequence();
+	Snake2Sequence(char (&ref)[8][8]);
 
 	virtual void next();
 
 private:
-	#define MAX_SNAKE_LEN 16
+	#define MAX_SNAKE_LEN 15
 
 	// Where is the snake
 	// [0] is the head
-	char snake_x[16];
-	char snake_y[16];
-	char snake_z[16];
+	char snake_x[15];
+	char snake_y[15];
+	char snake_z[15];
 
 	// How long is the snake
 	char snakeLen;

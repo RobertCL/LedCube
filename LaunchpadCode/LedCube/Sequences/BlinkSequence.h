@@ -12,7 +12,7 @@
 
 class BlinkSequence: public Sequence {
 public:
-	BlinkSequence();
+	BlinkSequence(char (&ref)[8][8]);
 
 	virtual void next();
 

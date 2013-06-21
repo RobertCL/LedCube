@@ -12,7 +12,7 @@ int head_x = 0, head_y = 0, head_z = 0;
 int delta_x = 0, delta_y = 0, delta_z = 0;
 int axis, direction;
 
-SnakeSequence::SnakeSequence() {
+SnakeSequence::SnakeSequence(char (&ref)[8][8]) : Sequence(ref) {
 	delta_x = 1;
 	axis = 1;
 	direction = 1;

@@ -12,7 +12,7 @@
 
 class SnakeSequence: public Sequence {
 public:
-	SnakeSequence();
+	SnakeSequence(char (&ref)[8][8]);
 
 	virtual void next();
 };

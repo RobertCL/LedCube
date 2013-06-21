@@ -12,7 +12,7 @@
 
 class OutlineSequence: public Sequence {
 public:
-	OutlineSequence();
+	OutlineSequence(char (&ref)[8][8]);
 
 	void next();
 };

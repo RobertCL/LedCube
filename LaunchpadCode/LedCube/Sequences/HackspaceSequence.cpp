@@ -10,7 +10,7 @@
 const char text[] = { 'H', 'A', 'C', 'K', 'S', 'P', 'A', 'C', 'E' };
 const int textLen = 9;
 
-HackspaceSequence::HackspaceSequence() {
+HackspaceSequence::HackspaceSequence(char (&ref)[8][8]) : Sequence(ref) {
 	letterNo = 0;
 	transPos = -1;
 	delay = 50;

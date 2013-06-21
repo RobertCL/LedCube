@@ -7,7 +7,7 @@
 
 #include "TranslationTestSequence.h"
 
-TranslationTestSequence::TranslationTestSequence() {
+TranslationTestSequence::TranslationTestSequence(char (&ref)[8][8]) : Sequence(ref) {
 	plane = 0;
 	drawPlaneNext = true;
 	count = 0;

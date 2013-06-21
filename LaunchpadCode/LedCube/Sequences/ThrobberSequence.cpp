@@ -7,7 +7,7 @@
 
 #include "ThrobberSequence.h"
 
-ThrobberSequence::ThrobberSequence() {
+ThrobberSequence::ThrobberSequence(char (&ref)[8][8]) : Sequence(ref) {
 	count = 0;
 	countp = 1;
 }

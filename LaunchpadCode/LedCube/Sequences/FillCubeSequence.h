@@ -12,7 +12,7 @@
 
 class FillCubeSequence : public Sequence {
 public:
-	FillCubeSequence();
+	FillCubeSequence(char (&ref)[8][8]);
 
 	virtual void next();
 

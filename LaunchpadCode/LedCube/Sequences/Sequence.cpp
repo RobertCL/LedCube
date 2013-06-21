@@ -7,7 +7,9 @@
 
 #include "Sequence.h"
 
-Sequence::Sequence() {
+Sequence::Sequence(char (&ref)[8][8]) {
+	cube = &ref;
+
 	// Start with a blank cube
 	cubeOff();
 	delay = 10;
@@ -19,7 +21,7 @@ Sequence::~Sequence() {
 void Sequence::setCube(char d){
 	for (int i=0; i<8; i++)
 		for (int j=0; j<8; j++)
-			cube[i][j] = d;
+			(*cube)[i][j] = d;
 }
 
 void Sequence::cubeOff(){
@@ -31,11 +33,11 @@ void Sequence::cubeOn(){
 }
 
 void Sequence::setOn(int x, int y, int z) {
-	cube[z][y] |= 1<<x;
+	(*cube)[z][y] |= 1<<x;
 }
 
 bool Sequence::getState(int x, int y, int z) {
-	return cube[z][y] &= 1<<x;
+	return (*cube)[z][y] &= 1<<x;
 }
 
 void Sequence::drawCube(int x, int y, int z, int size){
@@ -46,78 +48,78 @@ void Sequence::drawCube(int x, int y, int z, int size){
 
 	for (int yp=0; yp<size; yp++)
 		for (int zp=0; zp<size; zp++)
-			cube[z + zp][y + yp] = t;
+			(*cube)[z + zp][y + yp] = t;
 }
 
 void Sequence::DrawXZPlane(int atY){
-	cube[0][atY] = 0xFF;
-	cube[1][atY] = 0xFF;
-	cube[2][atY] = 0xFF;
-	cube[3][atY] = 0xFF;
-	cube[4][atY] = 0xFF;
-	cube[5][atY] = 0xFF;
-	cube[6][atY] = 0xFF;
-	cube[7][atY] = 0xFF;
+	(*cube)[0][atY] = 0xFF;
+	(*cube)[1][atY] = 0xFF;
+	(*cube)[2][atY] = 0xFF;
+	(*cube)[3][atY] = 0xFF;
+	(*cube)[4][atY] = 0xFF;
+	(*cube)[5][atY] = 0xFF;
+	(*cube)[6][atY] = 0xFF;
+	(*cube)[7][atY] = 0xFF;
 }
 
 void Sequence::DrawYZPlane(int atX){
 	for (int z = 0; z < 8; z++)
 		for (int y = 0; y < 8; y++)
-			cube[z][y] |= 0x01 << atX;
+			(*cube)[z][y] |= 0x01 << atX;
 }
 
 void Sequence::DrawXYPlane(int atZ){
-	cube[atZ][0] = 0xFF;
-	cube[atZ][1] = 0xFF;
-	cube[atZ][2] = 0xFF;
-	cube[atZ][3] = 0xFF;
-	cube[atZ][4] = 0xFF;
-	cube[atZ][5] = 0xFF;
-	cube[atZ][6] = 0xFF;
-	cube[atZ][7] = 0xFF;
+	(*cube)[atZ][0] = 0xFF;
+	(*cube)[atZ][1] = 0xFF;
+	(*cube)[atZ][2] = 0xFF;
+	(*cube)[atZ][3] = 0xFF;
+	(*cube)[atZ][4] = 0xFF;
+	(*cube)[atZ][5] = 0xFF;
+	(*cube)[atZ][6] = 0xFF;
+	(*cube)[atZ][7] = 0xFF;
 }
 
 void Sequence::Translate(int x, int y, int z){
 	if (x == 1) {
 		for (int z = 0; z < 8 ;z++)
 			for (int y = 0; y < 8; y++)
-				cube[z][y] = cube[z][y] << 1;
+				(*cube)[z][y] = (*cube)[z][y] << 1;
 	}
 	else if (x == -1) {
 		for (int z = 0; z < 8 ;z++)
 			for (int y = 0; y < 8; y++)
-				cube[z][y] = cube[z][y] >> 1;
+				(*cube)[z][y] = (*cube)[z][y] >> 1;
 	}
 	if (y == 1)	{
 		for (int z = 0; z < 8; z++) {
 			for (int y = 7; y > 0; y--)
-				cube[z][y] = cube[z][y-1];
+				(*cube)[z][y] = (*cube)[z][y-1];
 
-			cube[z][0] = 0x00;
+			(*cube)[z][0] = 0x00;
 		}
 	}
 	else if (y == -1) {
 		for (int z = 0; z < 8; z++) {
 			for (int y = 1; y < 8; y++)
-				cube[z][y-1] = cube[z][y];
+				(*cube)[z][y-1] = (*cube)[z][y];
 
-			cube[z][7] = 0x00;
+			(*cube)[z][7] = 0x00;
 		}
 	}
 	if (z == 1) {
 		for (int y = 0; y < 8; y++) {
 			for (int z = 7; z > 0; z--)
-				cube[z][y] = cube[z-1][y];
+				(*cube)[z][y] = (*cube)[z-1][y];
 
-			cube[0][y] = 0x00;
+			(*cube)[0][y] = 0x00;
 		}
 	}
 	else if (z == -1) {
 		for (int y = 0; y < 8; y++)	{
 			for (int z = 1; z < 8; z++)
-				cube[z-1][y] = cube[z][y];
+				(*cube)[z-1][y] = (*cube)[z][y];
 
-			cube[7][y] = 0x00;
+			(*cube)[7][y] = 0x00;
 		}
 	}
 }
@@ -155,12 +157,12 @@ char letterData[26][8] = {
 void Sequence::drawLetter(char l, int atY){
 	int idx = l - 'A';
 
-	cube[7][atY] = letterData[idx][7];
-	cube[6][atY] = letterData[idx][6];
-	cube[5][atY] = letterData[idx][5];
-	cube[4][atY] = letterData[idx][4];
-	cube[3][atY] = letterData[idx][3];
-	cube[2][atY] = letterData[idx][2];
-	cube[1][atY] = letterData[idx][1];
-	cube[0][atY] = letterData[idx][0];
+	(*cube)[7][atY] = letterData[idx][7];
+	(*cube)[6][atY] = letterData[idx][6];
+	(*cube)[5][atY] = letterData[idx][5];
+	(*cube)[4][atY] = letterData[idx][4];
+	(*cube)[3][atY] = letterData[idx][3];
+	(*cube)[2][atY] = letterData[idx][2];
+	(*cube)[1][atY] = letterData[idx][1];
+	(*cube)[0][atY] = letterData[idx][0];
 }

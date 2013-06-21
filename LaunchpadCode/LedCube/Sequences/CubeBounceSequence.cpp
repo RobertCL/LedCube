@@ -7,7 +7,7 @@
 
 #include "CubeBounceSequence.h"
 
-CubeBounceSequence::CubeBounceSequence() :
+CubeBounceSequence::CubeBounceSequence(char (&ref)[8][8]) : Sequence(ref),
 	cube1(3, 0, 1, 3, 1, 1, 1),
 	cube2(0, 4, 3, 2, -1, -1, -1) {
 	delay = 7;

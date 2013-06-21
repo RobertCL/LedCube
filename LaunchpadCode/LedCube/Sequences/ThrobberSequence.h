@@ -12,7 +12,7 @@
 
 class ThrobberSequence: public Sequence {
 public:
-	ThrobberSequence();
+	ThrobberSequence(char (&ref)[8][8]);
 
 	virtual void next();
 

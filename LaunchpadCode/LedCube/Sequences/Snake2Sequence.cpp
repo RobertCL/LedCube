@@ -8,7 +8,7 @@
 #include "Snake2Sequence.h"
 #include <stdlib.h>
 
-Snake2Sequence::Snake2Sequence() {
+Snake2Sequence::Snake2Sequence(char (&ref)[8][8]) : Sequence(ref) {
 	initSnake();
 }
 

@@ -13,7 +13,7 @@
 
 class CubeBounceSequence: public Sequence {
 public:
-	CubeBounceSequence();
+	CubeBounceSequence(char (&ref)[8][8]);
 	virtual ~CubeBounceSequence();
 
 	virtual void next();

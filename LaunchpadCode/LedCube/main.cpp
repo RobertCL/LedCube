@@ -58,18 +58,21 @@ int main(void)
 	for (char i = 0; i < 8; i++)
 		hc.setp(i);
 
-	//BlinkSequence s1;
-	//CubeBounceSequence s1;
-	//FillCubeSequence s1;
-	//HackspaceSequence s1;
-	//OutlineSequence s1;
-	//PlaneSequence s1;
-	//SnakeSequence s1;
-	//Snake2Sequence s1;
-	//ThrobberSequence s1;
-	TranslationTestSequence s1;
+	char cube[8][8];
+	char (&ref)[8][8] = cube;
 
-	Sequence * s = &s1; // sequence s points to the address of the f1 object (polymorphism)
+	//BlinkSequence s1(ref);
+	//CubeBounceSequence s2(ref);
+	//FillCubeSequence s3(ref);
+	//HackspaceSequence s4(ref);
+	//OutlineSequence s5(ref);
+	//PlaneSequence s6(ref);
+	//SnakeSequence s7(ref);
+	Snake2Sequence s8(ref);
+	//ThrobberSequence s9(ref);
+	//TranslationTestSequence s10(ref);
+
+	Sequence * s = &s8; // sequence s points to the address of the f1 object (polymorphism)
 
 	while(1)
 	{
@@ -81,7 +84,7 @@ int main(void)
 				for (int r = 0; r < 8; r++)
 				{
 					// Set a outputs for a single row
-					GPIOPinWrite(PORT_LATCH, PIN_ALL, s->cube[l][r]);
+					GPIOPinWrite(PORT_LATCH, PIN_ALL, (*s->cube)[l][r]);
 					// Latch in outputs
 					hc.setp(r);
 				}

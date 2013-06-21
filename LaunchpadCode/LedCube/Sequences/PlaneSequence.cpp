@@ -7,7 +7,7 @@
 
 #include "PlaneSequence.h"
 
-PlaneSequence::PlaneSequence() {
+PlaneSequence::PlaneSequence(char (&ref)[8][8]) : Sequence(ref) {
 	i = 0;
 	ip = 1;
 	delay = 100;

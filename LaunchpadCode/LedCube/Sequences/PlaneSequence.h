@@ -12,7 +12,7 @@
 
 class PlaneSequence : public Sequence {
 public:
-	PlaneSequence();
+	PlaneSequence(char (&ref)[8][8]);
 
 	virtual void next();
 

@@ -12,7 +12,7 @@
 
 class TranslationTestSequence: public Sequence {
 public:
-	TranslationTestSequence();
+	TranslationTestSequence(char (&ref)[8][8]);
 
 	virtual void next();
 

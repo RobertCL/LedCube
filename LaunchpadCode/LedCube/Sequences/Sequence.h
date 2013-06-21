@@ -10,10 +10,10 @@
 
 class Sequence {
 public:
-	Sequence();
+	Sequence(char (&ref)[8][8]);
 	virtual ~Sequence();
 
-	char cube[8][8]; // Cube[layer, row]
+	char (*cube)[8][8]; // Cube[layer, row]
 
 	// Setup cube for next sequence
 	virtual void next() = 0;

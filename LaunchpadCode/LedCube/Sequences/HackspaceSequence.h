@@ -12,7 +12,7 @@
 
 class HackspaceSequence: public Sequence {
 public:
-	HackspaceSequence();
+	HackspaceSequence(char (&ref)[8][8]);
 
 	virtual void next();
 
