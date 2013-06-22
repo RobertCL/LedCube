@@ -14,6 +14,7 @@ class OutlineSequence: public Sequence {
 public:
 	OutlineSequence(char (&ref)[8][8]);
 
+	void initialize();
 	void next();
 };
 

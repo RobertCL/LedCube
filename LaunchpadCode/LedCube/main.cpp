@@ -24,6 +24,8 @@
 
 #define PIN_ALL 0xFF
 
+#define SEQ_COUNT 9
+
 int main(void)
 {
 	SysCtlClockSet(SYSCTL_SYSDIV_6|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
@@ -61,18 +63,25 @@ int main(void)
 	char cube[8][8];
 	char (&ref)[8][8] = cube;
 
-	//BlinkSequence s1(ref);
-	//CubeBounceSequence s2(ref);
-	//FillCubeSequence s3(ref);
-	//HackspaceSequence s4(ref);
-	//OutlineSequence s5(ref);
-	//PlaneSequence s6(ref);
+	BlinkSequence s1(ref);
+	CubeBounceSequence s2(ref);
+	FillCubeSequence s3(ref);
+	HackspaceSequence s4(ref);
+	OutlineSequence s5(ref);
+	PlaneSequence s6(ref);
 	//SnakeSequence s7(ref);
-	//Snake2Sequence s8(ref);
+	Snake2Sequence s8(ref);
 	ThrobberSequence s9(ref);
-	//TranslationTestSequence s10(ref);
+	TranslationTestSequence s10(ref);
 
-	Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
+	//Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
+
+	int sidx = 0;
+	Sequence *seqs[SEQ_COUNT] = { &s5, &s9, &s1, &s3, &s2, &s6, &s4, &s10, &s8 };
+	Sequence *s = seqs[sidx];
+	s->initialize();
+
+	int cycleCounter = 0;
 
 	while(1)
 	{
@@ -96,5 +105,16 @@ int main(void)
 			}
 
 		s->next();
+
+		cycleCounter++;
+		if (cycleCounter > s->runCycles)
+		{
+			sidx++;
+			if (sidx > SEQ_COUNT - 1) sidx = 0;
+
+			s = seqs[sidx];
+			s->initialize();
+			cycleCounter = 0;
+		}
 	}
 }

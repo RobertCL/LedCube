@@ -14,7 +14,8 @@ class SnakeSequence: public Sequence {
 public:
 	SnakeSequence(char (&ref)[8][8]);
 
-	virtual void next();
+	void initialize();
+	void next();
 };
 
 #endif /* SNAKESEQUENCE_H_ */

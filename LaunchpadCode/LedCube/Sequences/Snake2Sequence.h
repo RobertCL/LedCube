@@ -14,11 +14,12 @@ class Snake2Sequence: public Sequence {
 public:
 	Snake2Sequence(char (&ref)[8][8]);
 
-	virtual void next();
+	void initialize();
+	void next();
 
 private:
-	#define MAX_SNAKE_LEN 15
-	#define FOOD_COUNT 4
+	#define MAX_SNAKE_LEN 30
+	#define FOOD_COUNT 5
 
 	// Where is the snake
 	// [0] is the head
@@ -41,8 +42,6 @@ private:
 	char food_x[FOOD_COUNT];
 	char food_y[FOOD_COUNT];
 	char food_z[FOOD_COUNT];
-
-	void initSnake();
 
 	// Draws the current snake in the cube
 	void drawSnakeInCube();

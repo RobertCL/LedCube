@@ -7,7 +7,10 @@
 
 #include "BlinkSequence.h"
 
-BlinkSequence::BlinkSequence(char (&ref)[8][8]) : Sequence(ref) {
+BlinkSequence::BlinkSequence(char (&ref)[8][8]) : Sequence(ref) {}
+
+void BlinkSequence::initialize(){
+	Sequence::initialize();
 	isOn = false;
 	delay = 50;
 	delayChange = -1;

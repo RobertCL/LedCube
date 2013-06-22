@@ -14,7 +14,8 @@ class HackspaceSequence: public Sequence {
 public:
 	HackspaceSequence(char (&ref)[8][8]);
 
-	virtual void next();
+	void initialize();
+	void next();
 
 private:
 	int letterNo;

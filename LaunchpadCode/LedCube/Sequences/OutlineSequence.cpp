@@ -7,7 +7,11 @@
 
 #include "OutlineSequence.h"
 
-OutlineSequence::OutlineSequence(char (&ref)[8][8]) : Sequence(ref) {
+OutlineSequence::OutlineSequence(char (&ref)[8][8]) : Sequence(ref) {}
+
+void OutlineSequence::initialize(){
+	Sequence::initialize();
+
 	(*cube)[0][0] = 0xFF;
 	(*cube)[7][0] = 0xFF;
 
@@ -23,6 +27,5 @@ OutlineSequence::OutlineSequence(char (&ref)[8][8]) : Sequence(ref) {
 	}
 }
 
-void OutlineSequence::next(){
-}
+void OutlineSequence::next(){}
 

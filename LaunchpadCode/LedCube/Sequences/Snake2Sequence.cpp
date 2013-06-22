@@ -8,12 +8,13 @@
 #include "Snake2Sequence.h"
 #include <stdlib.h>
 
-Snake2Sequence::Snake2Sequence(char (&ref)[8][8]) : Sequence(ref) {
-	initSnake();
-}
+Snake2Sequence::Snake2Sequence(char (&ref)[8][8]) : Sequence(ref) {}
 
-void Snake2Sequence::initSnake(){
+void Snake2Sequence::initialize(){
+	Sequence::initialize();
+
 	delay = 10;
+	runCycles = 1000;
 	stuck = 0;
 
 	for (int i = 0; i < MAX_SNAKE_LEN; i++){
@@ -93,7 +94,7 @@ void Snake2Sequence::next(){
 
 		stuck--;
 		if (stuck == 0)
-			initSnake();
+			initialize();
 
 		return;
 	}

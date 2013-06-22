@@ -14,9 +14,9 @@
 class CubeBounceSequence: public Sequence {
 public:
 	CubeBounceSequence(char (&ref)[8][8]);
-	virtual ~CubeBounceSequence();
 
-	virtual void next();
+	void initialize();
+	void next();
 
 private:
 	CubeTracker cube1;

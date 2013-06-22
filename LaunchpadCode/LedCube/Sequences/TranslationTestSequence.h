@@ -14,7 +14,8 @@ class TranslationTestSequence: public Sequence {
 public:
 	TranslationTestSequence(char (&ref)[8][8]);
 
-	virtual void next();
+	void initialize();
+	void next();
 
 private:
 	int count;

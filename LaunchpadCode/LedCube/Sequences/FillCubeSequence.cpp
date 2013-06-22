@@ -7,10 +7,14 @@
 
 #include "FillCubeSequence.h"
 
-FillCubeSequence::FillCubeSequence(char (&ref)[8][8]) : Sequence(ref) {
+FillCubeSequence::FillCubeSequence(char (&ref)[8][8]) : Sequence(ref) {}
+
+void FillCubeSequence::initialize(){
+	Sequence::initialize();
 	x=0;
 	y=0;
 	delay = 1;
+	runCycles = 512;
 }
 
 void FillCubeSequence::next(){

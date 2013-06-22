@@ -14,7 +14,8 @@ class FillCubeSequence : public Sequence {
 public:
 	FillCubeSequence(char (&ref)[8][8]);
 
-	virtual void next();
+	void initialize();
+	void next();
 
 private:
 	int x;

@@ -8,9 +8,12 @@
 #include "HackspaceSequence.h"
 
 const char text[] = { 'H', 'A', 'C', 'K', 'S', 'P', 'A', 'C', 'E' };
-const int textLen = 9;
+#define TEXT_LEN 9
 
-HackspaceSequence::HackspaceSequence(char (&ref)[8][8]) : Sequence(ref) {
+HackspaceSequence::HackspaceSequence(char (&ref)[8][8]) : Sequence(ref) {}
+
+void HackspaceSequence::initialize(){
+	Sequence::initialize();
 	letterNo = 0;
 	transPos = -1;
 	delay = 50;
@@ -24,7 +27,7 @@ void HackspaceSequence::next() {
 		delay = 100;
 
 		letterNo++;
-		if (letterNo == textLen)
+		if (letterNo == TEXT_LEN)
 			letterNo = 0;
 	}
 

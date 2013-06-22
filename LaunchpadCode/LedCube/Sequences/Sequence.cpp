@@ -9,10 +9,13 @@
 
 Sequence::Sequence(char (&ref)[8][8]) {
 	cube = &ref;
+}
 
+void Sequence::initialize(){
 	// Start with a blank cube
 	cubeOff();
 	delay = 10;
+	runCycles = 50;
 }
 
 Sequence::~Sequence() {

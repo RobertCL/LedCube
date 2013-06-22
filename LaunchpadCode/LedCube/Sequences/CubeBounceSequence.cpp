@@ -10,10 +10,13 @@
 CubeBounceSequence::CubeBounceSequence(char (&ref)[8][8]) : Sequence(ref),
 	cube1(3, 0, 1, 3, 1, 1, 1),
 	cube2(0, 4, 3, 2, -1, -1, -1) {
-	delay = 7;
 }
 
-CubeBounceSequence::~CubeBounceSequence() {}
+void CubeBounceSequence::initialize(){
+	Sequence::initialize();
+	delay = 7;
+	runCycles = 200;
+}
 
 void CubeBounceSequence::next(){
 	cubeOff();

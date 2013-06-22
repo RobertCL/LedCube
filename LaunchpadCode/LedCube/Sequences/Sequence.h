@@ -15,6 +15,9 @@ public:
 
 	char (*cube)[8][8]; // Cube[layer, row]
 
+	// Initisalize sequence
+	virtual void initialize();
+
 	// Setup cube for next sequence
 	virtual void next() = 0;
 
@@ -22,6 +25,9 @@ public:
 	// measured in, er, number of times to run round draw cube loop in main
 	// 1 is fastest, 10 is a reasonable speed, 50 is slowish but good for debugging
 	int delay;
+
+	// Number of cycles to let pattern run for
+	int runCycles;
 
 protected:
 	// Set all rows in cube to be the same
