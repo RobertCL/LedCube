@@ -77,7 +77,7 @@ int main(void)
 	//Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
 
 	int sidx = 0;
-	Sequence *seqs[SEQ_COUNT] = { &s5, &s9, &s1, &s3, &s2, &s6, &s4, &s10, &s8 };
+	Sequence *seqs[SEQ_COUNT] = { &s3, &s5, &s9, &s1, &s2, &s6, &s4, &s10, &s8 };
 	Sequence *s = seqs[sidx];
 	s->initialize();
 
@@ -107,7 +107,7 @@ int main(void)
 		s->next();
 
 		cycleCounter++;
-		if (cycleCounter > s->runCycles)
+		if (s->finished || (s->runCycles != 0 && cycleCounter > s->runCycles))
 		{
 			sidx++;
 			if (sidx > SEQ_COUNT - 1) sidx = 0;

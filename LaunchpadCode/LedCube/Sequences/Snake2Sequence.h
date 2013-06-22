@@ -19,7 +19,7 @@ public:
 
 private:
 	#define MAX_SNAKE_LEN 30
-	#define FOOD_COUNT 5
+	#define FOOD_COUNT 10
 
 	// Where is the snake
 	// [0] is the head

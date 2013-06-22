@@ -11,14 +11,14 @@ Sequence::Sequence(char (&ref)[8][8]) {
 	cube = &ref;
 }
 
+Sequence::~Sequence(){}
+
 void Sequence::initialize(){
 	// Start with a blank cube
 	cubeOff();
 	delay = 10;
 	runCycles = 50;
-}
-
-Sequence::~Sequence() {
+	finished = false;
 }
 
 void Sequence::setCube(char d){

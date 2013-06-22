@@ -29,6 +29,9 @@ public:
 	// Number of cycles to let pattern run for
 	int runCycles;
 
+	// Has the sequence finished
+	bool finished;
+
 protected:
 	// Set all rows in cube to be the same
 	void setCube(char d);

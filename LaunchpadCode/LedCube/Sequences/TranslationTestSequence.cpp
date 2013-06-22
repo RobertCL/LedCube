@@ -16,6 +16,7 @@ void TranslationTestSequence::initialize(){
 	count = 0;
 	dir = 1;
 	delay = 4;
+	runCycles = 0;
 }
 
 void TranslationTestSequence::clearAndDrawInitialPlane(){
@@ -72,7 +73,7 @@ void TranslationTestSequence::next(){
 			dir = 1;
 
 			plane++;
-			if (plane == 6) plane = 0;
+			if (plane == 6) finished = true;
 			drawPlaneNext = true;
 		}
 	}

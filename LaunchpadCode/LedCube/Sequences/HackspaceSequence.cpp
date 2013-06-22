@@ -17,6 +17,7 @@ void HackspaceSequence::initialize(){
 	letterNo = 0;
 	transPos = -1;
 	delay = 50;
+	runCycles = 0;
 }
 
 void HackspaceSequence::next() {
@@ -28,7 +29,7 @@ void HackspaceSequence::next() {
 
 		letterNo++;
 		if (letterNo == TEXT_LEN)
-			letterNo = 0;
+			letterNo = -1;
 	}
 
 	else {
@@ -37,6 +38,10 @@ void HackspaceSequence::next() {
 	}
 
 	transPos++;
-	if (transPos == 4)
+	if (transPos == 8)
+	{
 		transPos = -1;
+		if (letterNo == -1)
+			finished = true;
+	}
 }

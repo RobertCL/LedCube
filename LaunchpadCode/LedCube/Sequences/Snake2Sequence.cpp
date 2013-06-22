@@ -14,7 +14,7 @@ void Snake2Sequence::initialize(){
 	Sequence::initialize();
 
 	delay = 10;
-	runCycles = 1000;
+	runCycles = 0;
 	stuck = 0;
 
 	for (int i = 0; i < MAX_SNAKE_LEN; i++){
@@ -94,7 +94,7 @@ void Snake2Sequence::next(){
 
 		stuck--;
 		if (stuck == 0)
-			initialize();
+			finished = true;
 
 		return;
 	}
