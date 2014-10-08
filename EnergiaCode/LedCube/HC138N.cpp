@@ -5,14 +5,14 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 
-HC138N::HC138N(long port):
-	_port(port){
-	GPIOPinTypeGPIOOutput(_port, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 );
+HC138N::HC138N(long port):_port(port){}
+
+HC138N::~HC138N(){}
+
+void HC138N::init(){
+   	GPIOPinTypeGPIOOutput(_port, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 );
 	GPIOPinWrite(_port, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3, 0x00);
 	disable();
-}
-
-HC138N::~HC138N(){
 }
 
 void HC138N::setp(unsigned char value){

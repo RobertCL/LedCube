@@ -14,6 +14,7 @@ public:
 	HC138N(long port);
 	virtual ~HC138N();
 
+        void init();
 	void set(unsigned char value);
 	void setp(unsigned char value);
 	void pulse();

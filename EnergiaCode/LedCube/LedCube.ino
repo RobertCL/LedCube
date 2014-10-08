@@ -25,6 +25,8 @@
 #define SEQ_COUNT 9
 
 
+#define LED RED_LED
+
 char cube[8][8];
 char (&ref)[8][8] = cube;
 int sidx = 0;
@@ -51,7 +53,6 @@ Sequence *s = seqs[sidx];
 
 void setup()
 {
-	SysCtlClockSet(SYSCTL_SYSDIV_6|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 
 	// Connections
 
@@ -67,11 +68,19 @@ void setup()
 	// Ground (Layer control)
 	// PA2..7,PC6,PC7
 
+
+
 	// Enable peripherals
 	SysCtlPeripheralEnable(PERIPH_HC);
 	SysCtlPeripheralEnable(PERIPH_LATCH);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
 	SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+        pinMode(LED, OUTPUT);
+
+        digitalWrite(LED, HIGH);
+        hc.init();
+        layers.init();
+        digitalWrite(LED, LOW);
 
 	// Setup Port expander, latch, layer control
 	GPIOPinTypeGPIOOutput(PORT_LATCH, PIN_ALL);
@@ -84,8 +93,19 @@ void setup()
 	s->initialize();
 }
 
+int lcyc=0;
+
 void loop()
 {
+    if (lcyc == 0) {
+      digitalWrite(LED, HIGH);   // turn the LED on (HIGH is the voltage level)
+      lcyc=1;
+    }
+    else {
+      digitalWrite(LED, LOW);
+      lcyc = 0;
+    }
+    
 	// repeat cube image a number of times before moving on to next image
 	for (int showdelay = 0; showdelay < s->delay; showdelay++)
 		for (int l = 0; l < 8; l++)
@@ -117,3 +137,4 @@ void loop()
 		cycleCounter = 0;
 	}
 }
+

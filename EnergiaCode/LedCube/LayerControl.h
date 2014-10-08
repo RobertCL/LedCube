@@ -14,6 +14,7 @@ public:
 	LayerControl();
 	virtual ~LayerControl();
 
+        void init();
 	void off();
 	void on(int layer);
 };

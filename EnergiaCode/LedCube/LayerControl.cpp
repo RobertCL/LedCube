@@ -5,14 +5,15 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 
-LayerControl::LayerControl(){
-	// LayerControl
-	GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_6 | GPIO_PIN_7);
-	GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7);
-	off();
-}
+LayerControl::LayerControl(){}
 
 LayerControl::~LayerControl(){}
+
+void LayerControl::init(){
+	GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_6 | GPIO_PIN_7);
+	GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7);
+	off();  
+}
 
 void LayerControl::off(){
 	// all off
