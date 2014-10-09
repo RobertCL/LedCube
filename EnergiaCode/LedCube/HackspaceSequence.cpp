@@ -7,8 +7,7 @@
 
 #include "HackspaceSequence.h"
 
-const char text[] = { 'H', 'A', 'C', 'K', 'S', 'P', 'A', 'C', 'E' };
-#define TEXT_LEN 9
+String text = "HACKSPACE";
 
 HackspaceSequence::HackspaceSequence(char (&ref)[8][8]) : Sequence(ref) {}
 
@@ -29,7 +28,7 @@ void HackspaceSequence::next() {
 		delay = 100;
 
 		letterNo++;
-		if (letterNo == TEXT_LEN)
+		if (letterNo == text.length())
 			letterNo = -1;
 	}
 
