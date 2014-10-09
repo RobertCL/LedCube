@@ -77,14 +77,13 @@ Sequence *s = seqs[sidx]; // the current sequence that is being run.
 
 void setup()
 {
-
-  
   // Enable peripherals
   SysCtlPeripheralEnable(PERIPH_HC);
   SysCtlPeripheralEnable(PERIPH_LATCH);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
+  // Init helper classes
   hc.init();
   layers.init();
   
@@ -96,6 +95,7 @@ void setup()
   for (char i = 0; i < 8; i++)
     hc.setp(i);
   
+  // Initialise the first sequence before entering the loop
   s->initialize();
 }
 
@@ -103,12 +103,12 @@ void loop()
 {
   // repeat cube image a number of times before moving on to next image
   for (int showdelay = 0; showdelay < s->delay; showdelay++)
-    for (int l = 0; l < 8; l++)
+    for (int l = 0; l < 8; l++) // foreach layer
     {
       // Loop round latched in this layer
-      for (int r = 0; r < 8; r++)
+      for (int r = 0; r < 8; r++) // foreach row in layer
       {
-        // Set a outputs for a single row
+        // Set outputs for a single row
         GPIOPinWrite(PORT_LATCH, PIN_ALL, (*s->cube)[l][r]);
         // Latch in outputs
         hc.setp(r);
@@ -120,15 +120,19 @@ void loop()
       layers.off();
     }
 
+  // move sequence on to next frame of animation
   s->next();
   cycleCounter++;
 
+  // check to see if sequence has reported completion or run for sufficient time
   if (s->finished || (s->runCycles != 0 && cycleCounter > s->runCycles))
   {
+    // move on to next sequence
     sidx++;
     if (sidx > SEQ_COUNT - 1) sidx = 0;
       s = seqs[sidx];
 
+    // initialise sequence and reset counters.
     s->initialize();
     cycleCounter = 0;
   }
