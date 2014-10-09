@@ -76,12 +76,6 @@ Sequence *s = seqs[sidx]; // the current sequence that is being run.
 
 void setup()
 {
-  // Enable peripherals
-  SysCtlPeripheralEnable(PERIPH_HC);
-  SysCtlPeripheralEnable(PERIPH_LATCH);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-
   // Startup Serial
   Serial.begin(115200);
   Serial.println("LED Cube startup...");
@@ -101,9 +95,9 @@ void setup()
     hc.setp(i);
   
   // Initialise the first sequence before entering the loop
+  s->initialize();
   Serial.print("Starting sequence - ");
   Serial.println(s->name);
-  s->initialize();
 }
 
 void loop()
@@ -143,10 +137,10 @@ void loop()
       s = seqs[sidx];
 
     // initialise sequence and reset counters.
-    Serial.print("Starting sequence - ");
-    Serial.println(s->name);
     s->initialize();
     cycleCounter = 0;
+    Serial.print("Starting sequence - ");
+    Serial.println(s->name);
   }
 }
 
@@ -156,21 +150,21 @@ void feedCommandBuffer()
 {
   while (Serial.available() > 0)
   {
-    int inByte = Serial.read();
+    char inByte = Serial.read();
     if (inByte == '\n')
     {
+      Serial.print(command);
       // Process command
-      if (command = "n") // Skip to next sequence
+      if (command == "n") // Skip to next sequence
       {
         s->finished = true;
       }
       else
       {
-        Serial.print("Unknown Command : ");
-        Serial.println(command);
+        Serial.print(" - unknown command");
       }
       
-      Serial.println("OK");
+      Serial.println(" - OK");
       command = "";
     }
     else

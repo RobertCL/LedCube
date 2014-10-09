@@ -19,6 +19,7 @@ void Sequence::initialize(){
 	delay = 10;
 	runCycles = 50;
 	finished = false;
+	name = "unset";
 }
 
 void Sequence::setCube(char d){

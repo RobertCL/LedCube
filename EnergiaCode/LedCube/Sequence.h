@@ -20,7 +20,7 @@ public:
   char (*cube)[8][8]; // Cube[layer, row]
 
   // Name of the sequence (for debug display)
-  String name = "unspecified";
+  String name;
   
   // Initisalize sequence
   virtual void initialize();
