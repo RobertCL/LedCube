@@ -14,6 +14,7 @@ void BlinkSequence::initialize(){
 	isOn = false;
 	delay = 50;
 	delayChange = -1;
+	name = "Blink";
 }
 
 void BlinkSequence::next(){

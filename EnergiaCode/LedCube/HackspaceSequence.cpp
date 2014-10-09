@@ -18,6 +18,7 @@ void HackspaceSequence::initialize(){
 	transPos = -1;
 	delay = 50;
 	runCycles = 0;
+	name = "Hackspace";
 }
 
 void HackspaceSequence::next() {

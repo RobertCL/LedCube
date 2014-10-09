@@ -11,6 +11,7 @@ OutlineSequence::OutlineSequence(char (&ref)[8][8]) : Sequence(ref) {}
 
 void OutlineSequence::initialize(){
 	Sequence::initialize();
+	name = "Outline";
 
 	(*cube)[0][0] = 0xFF;
 	(*cube)[7][0] = 0xFF;

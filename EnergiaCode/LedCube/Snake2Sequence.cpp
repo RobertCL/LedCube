@@ -16,6 +16,7 @@ void Snake2Sequence::initialize(){
 	delay = 10;
 	runCycles = 0;
 	stuck = 0;
+	name = "Snake2";
 
 	for (int i = 0; i < MAX_SNAKE_LEN; i++){
 		snake_x[i] = 0;

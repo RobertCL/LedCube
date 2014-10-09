@@ -16,6 +16,7 @@ void CubeBounceSequence::initialize(){
 	Sequence::initialize();
 	delay = 7;
 	runCycles = 200;
+	name = "Bounce";
 }
 
 void CubeBounceSequence::next(){

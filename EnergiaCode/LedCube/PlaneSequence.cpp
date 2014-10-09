@@ -14,6 +14,7 @@ void PlaneSequence::initialize(){
 	i = 0;
 	ip = 1;
 	delay = 100;
+	name = "Plane";
 }
 
 void PlaneSequence::next(){

@@ -15,6 +15,7 @@ void FillCubeSequence::initialize(){
 	y=0;
 	delay = 1;
 	runCycles = 512;
+	name = "FillCube";
 }
 
 void FillCubeSequence::next(){

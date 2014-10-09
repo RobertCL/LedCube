@@ -13,6 +13,7 @@ void ThrobberSequence::initialize(){
 	Sequence::initialize();
 	count = 0;
 	countp = 1;
+	name = "Throbber";
 }
 
 void ThrobberSequence::next(){

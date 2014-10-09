@@ -64,7 +64,6 @@ FillCubeSequence s3(ref);
 HackspaceSequence s4(ref);
 OutlineSequence s5(ref);
 PlaneSequence s6(ref);
-//SnakeSequence s7(ref);
 Snake2Sequence s8(ref);
 ThrobberSequence s9(ref);
 TranslationTestSequence s10(ref);
@@ -83,7 +82,12 @@ void setup()
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
+  // Startup Serial
+  Serial.begin(115200);
+  Serial.println("LED Cube startup...");
+
   // Init helper classes
+  Serial.println("Initialise helpers...");
   hc.init();
   layers.init();
   
@@ -91,11 +95,14 @@ void setup()
   GPIOPinTypeGPIOOutput(PORT_LATCH, PIN_ALL);
   
   // Turn everything off
+  Serial.println("Clear cube...");
   GPIOPinWrite(PORT_LATCH, PIN_ALL, 0x00);
   for (char i = 0; i < 8; i++)
     hc.setp(i);
   
   // Initialise the first sequence before entering the loop
+  Serial.print("Starting sequence - ");
+  Serial.println(s->name);
   s->initialize();
 }
 
@@ -133,6 +140,8 @@ void loop()
       s = seqs[sidx];
 
     // initialise sequence and reset counters.
+    Serial.print("Starting sequence - ");
+    Serial.println(s->name);
     s->initialize();
     cycleCounter = 0;
   }

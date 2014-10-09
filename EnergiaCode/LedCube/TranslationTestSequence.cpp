@@ -17,6 +17,7 @@ void TranslationTestSequence::initialize(){
 	dir = 1;
 	delay = 4;
 	runCycles = 0;
+	name = "Translation";
 }
 
 void TranslationTestSequence::clearAndDrawInitialPlane(){
