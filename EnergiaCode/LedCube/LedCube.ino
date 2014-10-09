@@ -40,6 +40,7 @@
 #include "OutlineSequence.h"
 #include "SnakeSequence.h"
 #include "Snake2Sequence.h"
+#include "CubeGrowSequence.h"
 
 #define PERIPH_HC SYSCTL_PERIPH_GPIOE
 #define PORT_HC GPIO_PORTE_BASE
@@ -67,11 +68,12 @@ PlaneSequence s6(ref);
 Snake2Sequence s8(ref);
 ThrobberSequence s9(ref);
 TranslationTestSequence s10(ref);
+CubeGrowSequence s11(ref);
 
 // seqs is an array of sequences that we will run in order in the cube.
 // Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
-#define SEQ_COUNT 9
-Sequence *seqs[SEQ_COUNT] = { &s3, &s5, &s9, &s1, &s2, &s6, &s4, &s10, &s8 };
+#define SEQ_COUNT 10
+Sequence *seqs[SEQ_COUNT] = { &s11, &s3, &s5, &s9, &s1, &s2, &s6, &s4, &s10, &s8 };
 Sequence *s = seqs[sidx]; // the current sequence that is being run.
 
 void setup()
