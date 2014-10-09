@@ -108,6 +108,9 @@ void setup()
 
 void loop()
 {
+  // read data from serial into command buffer.
+  feedCommandBuffer();
+  
   // repeat cube image a number of times before moving on to next image
   for (int showdelay = 0; showdelay < s->delay; showdelay++)
     for (int l = 0; l < 8; l++) // foreach layer
@@ -147,3 +150,32 @@ void loop()
   }
 }
 
+String command;
+
+void feedCommandBuffer()
+{
+  while (Serial.available() > 0)
+  {
+    int inByte = Serial.read();
+    if (inByte == '\n')
+    {
+      // Process command
+      if (command = "n") // Skip to next sequence
+      {
+        s->finished = true;
+      }
+      else
+      {
+        Serial.print("Unknown Command : ");
+        Serial.println(command);
+      }
+      
+      Serial.println("OK");
+      command = "";
+    }
+    else
+    {
+      command += inByte;
+    }
+  }
+}
