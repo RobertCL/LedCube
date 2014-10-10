@@ -59,21 +59,22 @@ HC138N hc(PORT_HC); // port multiplexer controller
 LayerControl layers; // layer controller for turning on/off ground to layers in cube
 
 // Instances of sequence classes that provide display data
-BlinkSequence s1(ref);
-CubeBounceSequence s2(ref);
-FillCubeSequence s3(ref);
-HackspaceSequence s4(ref);
-OutlineSequence s5(ref);
-PlaneSequence s6(ref);
-Snake2Sequence s8(ref);
-ThrobberSequence s9(ref);
-TranslationTestSequence s10(ref);
-CubeGrowSequence s11(ref);
+BlinkSequence sBlink(ref);
+CubeBounceSequence sCubeBounce(ref);
+FillCubeSequence sFillCube(ref);
+HackspaceSequence sHackspace(ref);
+OutlineSequence sOutline(ref);
+PlaneSequence sPlane(ref);
+
+Snake2Sequence sSnake(ref);
+ThrobberSequence sThrobber(ref);
+TranslationTestSequence sTranslation(ref);
+CubeGrowSequence sCubeGrow(ref);
 
 // seqs is an array of sequences that we will run in order in the cube.
 // Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
 #define SEQ_COUNT 10
-Sequence *seqs[SEQ_COUNT] = { &s11, &s3, &s5, &s9, &s1, &s2, &s6, &s4, &s10, &s8 };
+Sequence *seqs[SEQ_COUNT] = { &sCubeGrow, &sFillCube, &sOutline, &sThrobber, &sBlink, &sCubeBounce, &sPlane, &sHackspace, &sTranslation, &sSnake };
 Sequence *s = seqs[sidx]; // the current sequence that is being run.
 
 void setup()
