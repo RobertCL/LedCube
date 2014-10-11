@@ -41,7 +41,7 @@ void Sequence::setOn(int x, int y, int z) {
 }
 
 bool Sequence::getState(int x, int y, int z) {
-	return (*cube)[z][y] &= 1<<x;
+	return (*cube)[z][y] & 1<<x == 1<<x;
 }
 
 void Sequence::drawCube(int x, int y, int z, int size){

@@ -30,6 +30,7 @@
 #include "HC138N.h"
 #include "LayerControl.h"
 #include "Sequence.h"
+
 #include "FillCubeSequence.h"
 #include "BlinkSequence.h"
 #include "CubeBounceSequence.h"
@@ -41,6 +42,7 @@
 #include "SnakeSequence.h"
 #include "Snake2Sequence.h"
 #include "CubeGrowSequence.h"
+#include "RandomFillCubeSequence.h"
 
 #define PERIPH_HC SYSCTL_PERIPH_GPIOE
 #define PORT_HC GPIO_PORTE_BASE
@@ -65,16 +67,16 @@ FillCubeSequence sFillCube(ref);
 HackspaceSequence sHackspace(ref);
 OutlineSequence sOutline(ref);
 PlaneSequence sPlane(ref);
-
 Snake2Sequence sSnake(ref);
 ThrobberSequence sThrobber(ref);
 TranslationTestSequence sTranslation(ref);
 CubeGrowSequence sCubeGrow(ref);
+RandomFillCubeSequence sRandomFill(ref);
 
 // seqs is an array of sequences that we will run in order in the cube.
 // Sequence * s = &s9; // sequence s points to the address of the f1 object (polymorphism)
-#define SEQ_COUNT 10
-Sequence *seqs[SEQ_COUNT] = { &sCubeGrow, &sFillCube, &sOutline, &sThrobber, &sBlink, &sCubeBounce, &sPlane, &sHackspace, &sTranslation, &sSnake };
+#define SEQ_COUNT 11
+Sequence *seqs[SEQ_COUNT] = { &sRandomFill, &sCubeGrow, &sFillCube, &sOutline, &sThrobber, &sBlink, &sCubeBounce, &sPlane, &sHackspace, &sTranslation, &sSnake };
 Sequence *s = seqs[sidx]; // the current sequence that is being run.
 
 void setup()
