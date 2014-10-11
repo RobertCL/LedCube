@@ -27,9 +27,9 @@ void ThrobberSequence::next(){
 	}
 
 	if (count == 4 || count == 0)
-		delay = 10;
+		delay = 15;
 	else
-		delay = 4;
+		delay = 6;
 
 	count += countp;
 
